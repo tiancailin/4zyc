@@ -45,9 +45,9 @@
           <div id="c7_059" class="ceChair" data-toggle="modal" data-target="#myModal">
           </div>
         </div>
-        <div class="col-xs-12 hiddenFoot">
+        <!-- <div class="col-xs-12 hiddenFoot">
           
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- Modal -->
@@ -59,8 +59,9 @@
               <h4 class="modal-title" id="myModalLabel">标题</h4>
             </div>
             <div class="modal-body">
-              你点的方框就是座位，简单起见，只写了第一行的效果
-              怎么好看回头再美化
+              <p class="ceName">姓名：</p>
+              <p class="cePhone">电话：</p>
+              <p class="ceEmail">邮箱：</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -73,5 +74,70 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      // $("#c7_031").click(function(){
+      //   alert("a");
+      // })
+      $(document).ready(function(){
+        // Handler for .ready() called.
+        alert("i am ready");
+        $.getJSON("./js/test.json",function(data){
+          alert("I get json");
+          alert("第一行左边六个（031~115）可点击看效果");
+          // $.each(data,function(nameIndex,name){
+          //   alert(name["name"]);
+          //   alert(name["phone"]);
+          //$.each(data,function(Index,key){
+            // var a = "c7_115";
+            //alert(typeof self);
+            //alert(idIndex);
+            //alert(key["name"]);
+
+            //alert(idIndex.value);
+            // alert(key.name);
+            // if (a == key){
+            //   alert("now is over")
+            // }
+            // $.each(data,function(key1,val1){
+            //   alert(key1);
+            //   alert(val1);
+            // });
+          //});
+          //alert(this.name)
+          // var items = [];
+          // $.each(items,function(key,value){
+          //   alert(key + value);
+          // });
+          // alert("JSON data:" + json.id[2].name);
+
+          $(".floor7th > .ceChair").click(function(){
+            var aaa = $(this).attr("id");
+            //alert(aaa);
+            $.each(data,function(Index,key){
+              if(aaa == key["id"]){
+                // alert("找到相等的了");
+                // alert(key["name"]);
+                // alert(key["phone"]);
+                // alert(key["email"]);
+                var ceName = key["name"];
+                var cePhone = key["phone"];
+                var ceEmail = key["email"];
+                //alert($(".modal-body .ceName").html());
+                $(".modal-body .ceName").html("姓名："+ceName);
+                $(".modal-body .cePhone").html("姓名："+cePhone);
+                $(".modal-body .ceEmail").html("姓名："+ceEmail);
+              }
+            });
+          });
+          //上面段落可用
+          // alert($(".modal-body .ceName").html());
+          // var aaa = "我是大傻逼";
+          // $(".modal-body .ceName").html() = aaa;
+          // alert($(".modal-body .ceName").html());
+        });
+        
+        
+      });
+    </script>
   </body>
 </html>
